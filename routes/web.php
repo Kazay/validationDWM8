@@ -12,5 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+
+Route::get('/artists', 'ArtistController@display');
+Route::get('/albums', 'AlbumController@display');
+Route::get('/labels', 'LabelController@display');
