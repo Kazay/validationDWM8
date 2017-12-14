@@ -1,6 +1,6 @@
 <header>
     <nav>
-        <div class="flex-nav content">
+        <div class="flex-nav">
             <div class="mlr-1 brand">
                 <span>Music Store<span>
             </div>

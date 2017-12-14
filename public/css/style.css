@@ -1,7 +1,7 @@
 body {
     margin: 0;
     background-color: #3F5765;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Roboto', sans-serif;
     background: url('../images/home-bg.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -10,6 +10,7 @@ body {
 }
 
 h1 {
+    font-family: 'Limelight', cursive;    
     font-size: 3rem;
     text-transform: uppercase;
     color: #EFEFEF;
@@ -32,6 +33,18 @@ h2 {
     margin: 0 auto;
 }
 
+.test {
+    display: block;
+    width: 500px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: #E5E5E5;
+    color: #FF530D;
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}
+
 /*** NAV ***/
 
 
@@ -42,12 +55,14 @@ h2 {
     height: 100px;
 }   
     .brand {
+        font-family: 'Limelight', cursive;        
         font-size: 2rem;
         color: #FF530D;
     }
 
     .nav__items a,
     .nav__items a:visited {
+        margin: 1rem;
         padding: 1rem;
         color: #EFEFEF;
         text-decoration: none;
@@ -117,6 +132,7 @@ h2 {
     /*** CONTENT ***/
 
     .table--style {
+        flex-wrap: wrap;
         margin: 0 auto;
         background-color: #EFEFEF;
         box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
@@ -129,11 +145,10 @@ h2 {
         th, td {
             padding: 1.2rem;
             text-align: center;
-            border: 1px solid #BDD4DE;
         }
 
         th {
-            background-color: #2B3A42;
+            background-color: #FF530D;
             color: #EFEFEF;
         }
 

@@ -14,6 +14,9 @@ class LabelController extends Controller
     }
 
     public function add(Request $request) {
+        $validatedData = $request->validate([
+        'name' => 'required|unique:labels|max:255'
+        ]);
         $label = new Label;
         $label->name = strtolower($request->name);
         $label->save();

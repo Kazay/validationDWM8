@@ -28,11 +28,21 @@
             @endforeach
                 <tr>
                     {!! Form::open(['url' => '/labels/add']) !!}
-                        <td>1</td>
+                        <td></td>
                         <td>{{ Form::text('name', '', ['placeholder' => 'name']) }}</td>
                         <td>{{ Form::submit('ADD',  ['class' => 'table__btn--style table__btn--add']) }}</td>
+                        <td></td>
                     {!! Form::close() !!}
                 </tr>
         </tbody>
     </table>
+    @if ($errors->any())
+    <div class="test">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 @endsection
