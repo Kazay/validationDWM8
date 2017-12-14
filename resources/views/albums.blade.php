@@ -33,11 +33,25 @@
                         <span>{{ $label->name }}<span>
                         @endforeach
                     </td>
-                    <td>{{ $album->support->type }}</td>
-                    <td><a href="#"><i class="fa fa-pencil fa-2x table__btn--style table__btn--edit" aria-hidden="true"></i></a></td>
-                    <td><a href="#"><i class="fa fa-trash fa-2x table__btn--style table__btn--delete" aria-hidden="true"></i></a></td>
+                    <td>{{ $album->support->name }}</td>
+                    <td><a href="albums/update/{{$album->id}}" class='table__btn--style table__btn--edit'>UPDATE</a></td>
+                    {!! Form::open(['url' => '/albums/delete/' . $album->id]) !!}
+                        <td>{{ Form::submit('DELETE',  ['class' => 'table__btn--style table__btn--delete']) }}</td>
+                    {!! Form::close() !!}  
                 </tr>
             @endforeach
+            <tr>
+                {!! Form::open(['url' => '/albums/add']) !!}
+                    <td></td>
+                    <td>{{ Form::text('title', '', ['placeholder' => 'Title']) }}</td>
+                    <td>{{{ Form::select('artist', $artists, $album->artist->id) }}}</td>
+                    <td>{{ Form::number('release_year', '', ['placeholder' => 'Release year']) }}</td>
+                    <td>{{ Form::text('genre', '', ['placeholder' => 'Genre']) }}</td>
+                    <td>{{{ Form::select('label[]', $labels, $album->labels, ['size' => count($labels), 'multiple' => true]) }}}</td>
+                    <td>{{{ Form::select('support', $supports, $album->support->id) }}}</td>
+                    <td>{{ Form::submit('ADD',  ['class' => 'table__btn--style table__btn--add']) }}</td>
+                {!! Form::close() !!}
+            </tr>
         </tbody>
     </table>
 @endsection

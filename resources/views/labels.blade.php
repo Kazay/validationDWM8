@@ -20,10 +20,19 @@
                 <tr>
                     <td>{{ $label->id }}</td>
                     <td>{{ $label->name }}</td>
-                    <td><a href="#"><i class="fa fa-pencil fa-2x table__btn--style table__btn--edit" aria-hidden="true"></i></a></td>
-                    <td><a href="#"><i class="fa fa-trash fa-2x table__btn--style table__btn--delete" aria-hidden="true"></i></a></td>
+                    <td><a href="labels/update/{{$label->id}}" class='table__btn--style table__btn--edit'>UPDATE</a></td>
+                    {!! Form::open(['url' => '/labels/delete/' . $label->id]) !!}
+                        <td>{{ Form::submit('DELETE',  ['class' => 'table__btn--style table__btn--delete']) }}</td>
+                    {!! Form::close() !!}  
                 </tr>
             @endforeach
+                <tr>
+                    {!! Form::open(['url' => '/labels/add']) !!}
+                        <td>1</td>
+                        <td>{{ Form::text('name', '', ['placeholder' => 'name']) }}</td>
+                        <td>{{ Form::submit('ADD',  ['class' => 'table__btn--style table__btn--add']) }}</td>
+                    {!! Form::close() !!}
+                </tr>
         </tbody>
     </table>
 @endsection

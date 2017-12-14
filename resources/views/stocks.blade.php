@@ -7,25 +7,32 @@
 @endsection
 
 @section('main')
-    <h1>ARTISTS LIST</h1>
+    <h1>STOCKS</h1>
     <table class="table--style">
         <thead>
             <th>#</th>
-            <th>Name</th>
-            <th>Birthyear</th>
-            <th>Country</th>
-            <th>Edit</th>
-            <th>Delete</th>
+            <th>Title</th>
+            <th>Artist</th>
+            <th>Release Year</th>
+            <th>Support</th>
+            <th>Stock</th>
+            <th>Price</th>
+            <th>Update</th>
         </thead>
         <tbody>
-            @foreach($artists as $artist)
+            @foreach($albums as $album)
                 <tr>
-                    <td>{{ $artist->id }}</td>
-                    <td>{{ $artist->name }}</td>
-                    <td>{{ $artist->birthyear }}</td>
-                    <td>{{ $artist->country }}</td>
-                    <td><a href="#"><i class="fa fa-pencil fa-2x table__btn--style table__btn--edit" aria-hidden="true"></i></a></td>
-                    <td><a href="#"><i class="fa fa-trash fa-2x table__btn--style table__btn--delete" aria-hidden="true"></i></a></td>
+                    {!! Form::open(['url' => '/stocks/update/' . $album->id]) !!}
+                        {{ Form::hidden('id', $album->id) }}
+                        <td>{{ $album->id }}</td>
+                        <td>{{ $album->title }}</td>
+                        <td>{{ $album->artist->name }}</td>
+                        <td>{{ $album->release_year }}</td>
+                        <td>{{ $album->support->name }}</td>
+                        <td>{{ Form::number('stock', $album->stock) }}</td>
+                        <td>{{ Form::number('price', $album->price) }}</td>
+                        <td>{{ Form::submit('CONFIRM',  ['class' => 'table__btn--style table__btn--edit']) }}</td>
+                    {!! Form::close() !!}  
                 </tr>
             @endforeach
         </tbody>
