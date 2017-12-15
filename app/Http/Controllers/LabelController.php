@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Validator;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 Use App\Label;
 
@@ -35,6 +37,18 @@ class LabelController extends Controller
     }
 
     public function updateAction(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'name' => [
+                'required',
+                Rule::unique('labels')->ignore($request->id),
+                'max:255'
+            ]
+        ]);
+        if ($validator->fails()) {
+            return redirect('/labels/update/' . $request->id)
+                        ->withErrors($validator)
+                        ->withInput();
+        }
         $label = Label::find($request->id);
         $label->name = strtolower($request->name);
         $label->save();

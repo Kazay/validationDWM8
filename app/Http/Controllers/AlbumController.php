@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Validator;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 Use App\Album;
 Use App\Support;
@@ -32,6 +34,11 @@ class AlbumController extends Controller
     }
 
     public function add(Request $request) {
+        $validatedData = $request->validate([
+            'title' => 'required|unique:albums|max:255',
+            'release_year' => 'required|integer',
+            'genre' => 'required'
+        ]);
         $album = new Album;
         $album->title = strtolower($request->title);
         $album->artist_id = $request->artist;
@@ -71,6 +78,18 @@ class AlbumController extends Controller
     }
 
     public function updateAction(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'title' => [
+                'required',
+                Rule::unique('albums')->ignore($request->id),
+                'max:255'
+            ]
+        ]);
+        if ($validator->fails()) {
+            return redirect('/albums/update/' . $request->id)
+                        ->withErrors($validator)
+                        ->withInput();
+        }
         $album = Album::find($request->id);
         $album->title = $request->title;
         $album->artist_id = $request->artist;
@@ -99,6 +118,10 @@ class AlbumController extends Controller
     }
 
     public function updateActionStocks(Request $request) {
+        $validatedData = $request->validate([
+            'stock' => 'required|integer',
+            'price' => 'required|numeric|between:0,9999.99'
+        ]);
         $album = Album::find($request->id);
         $album->stock = $request->stock;
         $album->price = $request->price;

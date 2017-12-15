@@ -8,14 +8,74 @@
 
 @section('main')
     <h1>UPDATE AN ALBUM</h1>
+    @if ($errors->any())
+        <div class="errors--display">
+            <i class="fa fa-exclamation-triangle fa-2x orange" aria-hidden="true"></i>
+            <ul class="errors__list">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     {!! Form::open(['url' => '/albums/update-action/']) !!}
         {{ Form::hidden('id', $album->id) }}
-        {{ Form::text('title', $album->title) }}
-        {{{ Form::select('artist', $artist, $album->artist->id) }}}
-        {{ Form::number('release_year', $album->release_year) }}
-        {{ Form::text('genre', $album->genre) }}
-        {{{ Form::select('label[]', $labels, $album->labels, ['size' => count($labels), 'multiple' => true]) }}}
-        {{{ Form::select('support', $supports, $album->support->id) }}}
-        {{ Form::submit('CONFIRM',  ['class' => 'table__btn--style table__btn--edit']) }}
+        <div class="update__cards">
+            <div class="cards_label">
+                <label name='label'>Title :</label>
+            </div>
+            <div class="cards__input">
+                {{ Form::text('title', $album->title) }}
+            </div>
+        </div>
+        <div class="update__cards">
+            <div class="cards_label">
+                <label name='label'>Artist :</label>
+            </div>
+            <div class="cards__input">
+                <div class="select-style">
+                    {{{ Form::select('artist', $artist, $album->artist->id) }}}
+                </div>
+            </div>
+        </div>
+        <div class="update__cards">
+            <div class="cards_label">
+                <label name='label'>Release year :</label>
+            </div>
+            <div class="cards__input">
+                {{ Form::number('release_year', $album->release_year) }}
+            </div>
+        </div>
+        <div class="update__cards">
+            <div class="cards_label">
+                <label name='label'>Genre :</label>
+            </div>
+            <div class="cards__input">
+                {{ Form::text('genre', $album->genre) }}
+            </div>
+        </div>
+        <div class="update__cards">
+            <div class="cards_label">
+                <label name='label'>Label :</label>
+            </div>
+            <div class="cards__input">
+                <div class="select-style">
+                    {{{ Form::select('label[]', $labels, $album->labels, ['size' => count($labels), 'multiple' => true]) }}}
+                </div>
+            </div>
+        </div>
+        <div class="update__cards">
+            <div class="cards_label">
+                <label name='label'>Support :</label>
+            </div>
+            <div class="cards__input">
+                <div class="select-style">
+                    {{{ Form::select('support', $supports, $album->support->id) }}}
+                </div>
+            </div>
+        </div>
+        <div class="update__button">
+            {{ Form::submit('SAVE',  ['class' => 'update__button--style']) }}
+        </div>
     {!! Form::close() !!}
 @endsection

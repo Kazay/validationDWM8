@@ -33,11 +33,9 @@ h2 {
     margin: 0 auto;
 }
 
-.test {
-    display: block;
-    width: 500px;
+#test {
     margin: 2rem auto;
-    padding: 1rem;
+    padding: 1rem 0;
     background-color: #E5E5E5;
     color: #FF530D;
     box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
@@ -58,6 +56,7 @@ h2 {
         font-family: 'Limelight', cursive;        
         font-size: 2rem;
         color: #FF530D;
+        margin-left: 2rem;
     }
 
     .nav__items a,
@@ -134,7 +133,6 @@ h2 {
     .table--style {
         flex-wrap: wrap;
         margin: 0 auto;
-        background-color: #EFEFEF;
         box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
         0px 2px 2px 0px rgba(0, 0, 0, 0.14),
         0px 1px 5px 0px rgba(0, 0, 0, 0.12);
@@ -143,7 +141,7 @@ h2 {
     }  
         
         th, td {
-            padding: 1.2rem;
+            padding: 1rem;
             text-align: center;
         }
 
@@ -155,32 +153,56 @@ h2 {
         tr:nth-child(even) {
             background-color: #E5E5E5;
         }
+        tr:nth-child(odd) {
+            background-color: #EFEFEF;;
+        }
 
-        .table__btn--style,
-        .table__btn--style:visited {
-            padding: 0.6rem 1rem;
+        .table__button--style,
+        .table__button--style:visited {
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 1rem;
+            width: 80px;
             color: #FFF;
+            border: none;
             border-radius: 2px;
             box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
             0px 2px 2px 0px rgba(0, 0, 0, 0.14),
             0px 1px 5px 0px rgba(0, 0, 0, 0.12);
         }
 
-        .table__btn--style:hover,
-        .table__btn--style:focus {
-            color: #2B3A42;
+        .modify {
+            background-color: transparent !important;
         }
 
-        .table__btn--edit {
-            background-color: #7AD487;
+        .btn--delete,
+        .btn--delete:visited {
+            background-color: #E83333;
         }
 
-        .table__btn--delete {
-            background-color: #F36B66;
+        .btn--delete:focus,
+        .btn--delete:hover {
+            background-color: #CC2C2C;
         }
 
-        .table__btn--add {
-            background-color: #5B9DC4;
+        .btn--update,
+        .btn--update:visited {
+            background-color: #34C94A;
+        }
+
+        .btn--update:focus,
+        .btn--update:hover {
+            background-color: #2CAA3F;
+        }
+
+        .btn--add,
+        .btn--add:visited {
+            background-color: #49B6FF;
+        }
+
+        .btn--add:focus,
+        .btn--add:hover {
+            background-color: #3B92CC;
         }
 
         input {
@@ -192,3 +214,131 @@ h2 {
         input[type="submit"] {
             border: none;
         }
+
+    .errors--display {
+        width: 300px;
+        margin: 2rem auto;
+        padding: 1rem;
+        text-align: center;
+        color: #FF530D;
+        font-weight: 400;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+
+        .errors__list {
+            padding: 0;
+            list-style-type: none;
+        }
+
+        .errors__list li {
+            margin-bottom: 1rem;
+        }
+
+        .orange {
+            margin-top: 1rem;
+            color: #FF530D;
+        }
+
+/*** FORM UPDATE ***/
+
+.form--update {
+    width: 600px;
+    padding: 2rem 2rem;
+    background-color: #EFEFEF;
+    border-radius: 2px;
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}
+
+.update__cards {
+    width: 600px;
+    min-height: 80px;
+    display: flex;
+    margin: 1rem auto;
+    justify-content: center;
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}
+
+.cards_label {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center; 
+    width: 150px;
+    min-height: 80px;
+    background-color: #FF530D;
+    color: #EFEFEF;
+}
+
+    .cards_label label {
+        margin-left: 1rem;
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+
+.cards__input {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    width: 450px;
+    min-height: 80px;
+    background-color: #EFEFEF;
+    color: #FF530D;
+}
+
+    .cards__input input {
+        width: 400px;
+    }
+
+    .cards__input select {
+        width: 400px;
+    }
+
+.update__button {
+    display: flex;
+    justify-content: center;
+}
+
+.update__button--style,
+.update__button--style:visited {
+    text-decoration: none;
+    background-color: #34C94A;
+    font-size: 1.3rem;
+    padding: 1rem;
+    width: 600px;
+    color: #FFF;
+    border-radius: 2px;
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}
+
+.update__button--style:focus,
+.update__button--style:hover {
+    background-color: #2CAA3F;
+}
+
+.select-style {
+    border: 1px solid #ccc;
+    width: 400px;
+    overflow: hidden;
+    background: #FFF url("../images/arrow-icon.png") no-repeat 95% 50%;
+    background-size: 20px 20px;
+    margin: 1rem;
+}
+
+.select-style select {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+}
+
+.select-style select:focus {
+    outline: none;
+}
