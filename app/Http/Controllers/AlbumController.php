@@ -13,6 +13,7 @@ Use App\Artist;
 
 class AlbumController extends Controller
 {
+    
     public function display() {
         $supportsAll = Support::all();
         $supports = [];

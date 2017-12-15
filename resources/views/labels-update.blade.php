@@ -20,6 +20,7 @@
     @endif
     {!! Form::open(['url' => '/labels/update-action/']) !!}
         {{ Form::hidden('id', $label->id) }}
+        <div class="add__form">
             <div class="update__cards">
                 <div class="cards_label">
                     <label name='label'>Name :</label>
@@ -28,8 +29,9 @@
                     {{ Form::text('name', $label->name) }}
                 </div>
             </div>
+        </div>
         <div class="update__button">
-            {{ Form::submit('SAVE',  ['class' => 'update__button--style']) }}
+            {{ Form::submit('SAVE',  ['class' => 'update__button--style btn--update']) }}
         </div>
     {!! Form::close() !!}
 @endsection

@@ -7,8 +7,7 @@
 @endsection
 
 @section('main')
-    <h1>ALBUMS LIST</h1>
-
+    <h1>ADD AN ALBUM</h1>
     @if ($errors->any())
         <div class="errors--display">
             <i class="fa fa-exclamation-triangle fa-2x orange" aria-hidden="true"></i>
@@ -19,45 +18,8 @@
             </ul>
         </div>
     @endif
-    <table class="table--style">
-        <thead>
-            <th>Title</th>
-            <th>Artist</th>
-            <th>Release Year</th>
-            <th>Genre</th>
-            <th>Label</th>
-            <th>Support</th>
-            <th></th>
-            <th></th>
-        </thead>
-        <tbody>
-            @foreach($albums as $album)
-                <tr>
-                    <td>{{ $album->title }}</td>
-                    <td>{{ $album->artist->name }}</td>
-                    <td>{{ $album->release_year }}</td>
-                    <td>{{ $album->genre }}</td>
-                    <td>
-                        @foreach ($album->label as $label)
-                        <span>{{ $label->name }}<span>
-                        @endforeach
-                    </td>
-                    <td>{{ $album->support->name }}</td>
-                    <td><a href="albums/update/{{$album->id}}"><input type='button' class='table__button--style btn--update' value='EDIT'></a></td>
-                    {!! Form::open(['url' => '/albums/delete/' . $album->id]) !!}
-                        <td>{{ Form::submit('DEL',  ['class' => 'table__button--style btn--delete']) }}</td>
-                    {!! Form::close() !!}  
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-    
-        <div class="update__button">
-            <button id="display-addform" type="button" class="update__button--style btn--add">ADD AN ALBUM</button>
-            <button id="hide-addform" type="button" class="update__button--style btn--delete hidden">CANCEL</button>
-        </div>
-        <div class="add__form hidden">
-            {!! Form::open(['url' => '/albums/add']) !!}
+        <div class="add__form">
+            {!! Form::open(['url' => '/albums/add-action']) !!}
                 <div class="update__cards">
                     <div class="cards_label">
                         <label name='label'>Title :</label>
@@ -71,8 +33,8 @@
                         <label name='label'>Artist :</label>
                     </div>
                     <div class="cards__input">
-                        <div class="select-style select-style-bg-arrow">
-                            {{{ Form::select('artist', $artists, $album->artist->id) }}}
+                        <div class="select-style">
+                            {{{ Form::select('artist', $artists, $artists->id) }}}
                         </div>
                     </div>
                 </div>
@@ -97,8 +59,8 @@
                         <label name='label'>Label :</label>
                     </div>
                     <div class="cards__input">
-                        <div class="select-style select-style-bg-noarrow">
-                            {{{ Form::select('label[]', $labels, $album->labels, ['size' => count($labels), 'multiple' => true]) }}}
+                        <div class="select-style">
+                            {{{ Form::select('label[]', $labels, $labels, ['size' => count($labels), 'multiple' => true]) }}}
                         </div>
                     </div>
                 </div>
@@ -107,16 +69,15 @@
                         <label name='label'>Support :</label>
                     </div>
                     <div class="cards__input">
-                        <div class="select-style select-style-bg-arrow">
-                            {{{ Form::select('support', $supports, $album->support->id) }}}
+                        <div class="select-style">
+                            {{{ Form::select('support', $supports, $supports->id) }}}
                         </div>
                     </div>
                 </div>
                 <div class="update__button">
-                    {{ Form::submit('SAVE',  ['class' => 'update__button--style btn--update']) }}
+                    {{ Form::submit('ADD AN ALBUM',  ['class' => 'btn--update']) }}
                 </div>
                 
             {!! Form::close() !!}
         </div>
-        
 @endsection

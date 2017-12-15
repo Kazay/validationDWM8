@@ -33,6 +33,10 @@ h2 {
     margin: 0 auto;
 }
 
+.hidden {
+    display: none;
+}
+
 #test {
     margin: 2rem auto;
     padding: 1rem 0;
@@ -132,7 +136,7 @@ h2 {
 
     .table--style {
         flex-wrap: wrap;
-        margin: 0 auto;
+        margin: 2rem auto;
         box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
         0px 2px 2px 0px rgba(0, 0, 0, 0.14),
         0px 1px 5px 0px rgba(0, 0, 0, 0.12);
@@ -304,7 +308,7 @@ h2 {
 .update__button--style,
 .update__button--style:visited {
     text-decoration: none;
-    background-color: #34C94A;
+    border: none;
     font-size: 1.3rem;
     padding: 1rem;
     width: 600px;
@@ -315,18 +319,20 @@ h2 {
     0px 1px 5px 0px rgba(0, 0, 0, 0.12);
 }
 
-.update__button--style:focus,
-.update__button--style:hover {
-    background-color: #2CAA3F;
-}
-
 .select-style {
     border: 1px solid #ccc;
     width: 400px;
     overflow: hidden;
+    margin: 1rem;
+}
+
+.select-style-bg-arrow {
     background: #FFF url("../images/arrow-icon.png") no-repeat 95% 50%;
     background-size: 20px 20px;
-    margin: 1rem;
+}
+
+.select-style-bg-noarrow {
+    background: #FFF;
 }
 
 .select-style select {
@@ -342,3 +348,9 @@ h2 {
 .select-style select:focus {
     outline: none;
 }
+
+/*** FORM ADD ***/
+
+.add__form {
+    margin: 2rem auto; 
+} 
